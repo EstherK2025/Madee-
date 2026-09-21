@@ -225,6 +225,27 @@ main{flex:1 0 auto}
 .product__details li{position:relative;padding-left:1.3em;font-size:.92rem;color:var(--ink)}
 .product__details li::before{content:"";position:absolute;left:0;top:.6em;width:7px;height:1px;background:var(--stone)}
 
+/* Galerie produit (carrousel) */
+.gallery{position:sticky;top:96px;display:flex;flex-direction:column;gap:12px}
+.gallery__main{position:relative;aspect-ratio:4/5;border-radius:4px;overflow:hidden;background:var(--paper-2)}
+.gallery__main img{width:100%;height:100%;object-fit:cover}
+.gallery__arrow{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:999px;border:1px solid var(--glass-brd);background:var(--glass-light);-webkit-backdrop-filter:blur(12px) saturate(1.3);backdrop-filter:blur(12px) saturate(1.3);cursor:pointer;font-size:1.5rem;line-height:1;color:var(--ink);display:grid;place-items:center;transition:.25s var(--ease)}
+.gallery__arrow:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.gallery__arrow--prev{left:12px}.gallery__arrow--next{right:12px}
+.gallery__dots{position:absolute;bottom:14px;left:0;right:0;display:flex;justify-content:center;gap:7px}
+.gallery__dots span{width:7px;height:7px;border-radius:999px;background:rgba(255,255,255,.65);border:1px solid rgba(26,33,19,.18);cursor:pointer;transition:.25s var(--ease)}
+.gallery__dots span.is-on{background:var(--ink);width:20px}
+.gallery__thumbs{display:flex;gap:10px}
+.gallery__thumb{width:72px;aspect-ratio:4/5;border-radius:3px;overflow:hidden;border:1px solid var(--line);background:var(--paper-2);cursor:pointer;padding:0;transition:.2s var(--ease)}
+.gallery__thumb.is-on{border-color:var(--ink)}
+.gallery__thumb img{width:100%;height:100%;object-fit:cover}
+
+/* Pastilles de coloris */
+.swatches{display:flex;gap:10px;flex-wrap:wrap}
+.swatch{width:32px;height:32px;border-radius:999px;border:1px solid var(--line);cursor:pointer;transition:.2s var(--ease)}
+.swatch.is-selected{box-shadow:0 0 0 2px var(--paper),0 0 0 3.5px var(--ink)}
+.swatch:hover{transform:scale(1.08)}
+
 /* Panier */
 .cart{display:grid;grid-template-columns:1.5fr .9fr;gap:clamp(30px,4vw,60px);align-items:start}
 .cart__line{display:grid;grid-template-columns:92px 1fr auto;gap:20px;padding:22px 0;border-bottom:1px solid var(--line);align-items:center}
@@ -336,7 +357,7 @@ main{flex:1 0 auto}
   .hero__content{padding:clamp(40px,8vw,72px) 0}
   .hero__panel{border-left:none;border-top:1px solid var(--line);min-height:340px}
   .maison__grid,.editorial__grid,.product,.cart{grid-template-columns:1fr}
-  .product__media,.summary{position:static}
+  .product__media,.summary,.gallery{position:static}
   .valeurs__grid,.products-grid{grid-template-columns:repeat(2,1fr)}
   .footer__grid{grid-template-columns:1fr 1fr}
   .footer__brand{grid-column:1 / -1}

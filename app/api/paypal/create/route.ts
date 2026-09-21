@@ -8,7 +8,7 @@ import {
 
 export const runtime = "nodejs";
 
-type IncomingItem = { slug: string; size: string; qty: number };
+type IncomingItem = { slug: string; size: string; qty: number; color?: string };
 
 function euro(cents: number): string {
   return (cents / 100).toFixed(2);
@@ -30,8 +30,9 @@ export async function POST(req: NextRequest) {
     const qty = Math.max(1, Math.min(20, Math.floor(Number(it.qty) || 0)));
     if (!product) continue;
     totalCents += product.price * qty;
+    const label = [product.name, it.color, it.size].filter(Boolean).join(" · ");
     items.push({
-      name: product.name.slice(0, 127),
+      name: label.slice(0, 127),
       quantity: String(qty),
       unit_amount: { currency_code: "EUR", value: euro(product.price) },
     });

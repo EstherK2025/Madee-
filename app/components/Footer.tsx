@@ -19,9 +19,9 @@ export default function Footer() {
         <nav className="footer__col">
           <h4>Boutique</h4>
           <Link href="/boutique/nouveautes">Nouveautés</Link>
-          <Link href="/boutique/abayas">Abayas</Link>
           <Link href="/boutique/ensembles">Ensembles</Link>
-          <Link href="/boutique/accessoires">Accessoires</Link>
+          <Link href="/boutique/hauts">Hauts</Link>
+          <Link href="/boutique">Toute la collection</Link>
         </nav>
         <nav className="footer__col">
           <h4>La Maison</h4>

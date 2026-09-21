@@ -6,6 +6,9 @@ import Footer from "./components/Footer";
 import Announce from "./components/Announce";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
+  ),
   title: {
     default: "Madee — L'élégance modeste, réinventée",
     template: "%s · Madee",

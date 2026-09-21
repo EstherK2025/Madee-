@@ -38,23 +38,23 @@ export default function CartView() {
     <div className="cart">
       <div className="cart__lines">
         {lines.map((l) => (
-          <div className="cart__line" key={`${l.slug}-${l.size}`}>
+          <div className="cart__line" key={`${l.slug}-${l.size}-${l.color}`}>
             <Link href={`/produit/${l.slug}`} className="cart__thumb">
-              <ProductVisual product={l.product} label={l.product.name} />
+              <ProductVisual product={l.product} image={l.image} />
             </Link>
             <div>
               <Link href={`/produit/${l.slug}`}>
                 <span className="cart__name">{l.product.name}</span>
               </Link>
               <div className="cart__meta">
-                {l.product.category}
+                {l.color}
                 {l.size ? ` · Taille ${l.size}` : ""}
               </div>
               <div className="qty" style={{ marginTop: ".7em" }}>
                 <button
                   type="button"
                   aria-label="Diminuer"
-                  onClick={() => setQty(l.slug, l.size, l.qty - 1)}
+                  onClick={() => setQty(l.slug, l.size, l.color, l.qty - 1)}
                 >
                   −
                 </button>
@@ -62,7 +62,7 @@ export default function CartView() {
                 <button
                   type="button"
                   aria-label="Augmenter"
-                  onClick={() => setQty(l.slug, l.size, l.qty + 1)}
+                  onClick={() => setQty(l.slug, l.size, l.color, l.qty + 1)}
                 >
                   +
                 </button>
@@ -70,7 +70,7 @@ export default function CartView() {
               <button
                 type="button"
                 className="cart__remove"
-                onClick={() => remove(l.slug, l.size)}
+                onClick={() => remove(l.slug, l.size, l.color)}
               >
                 Retirer
               </button>

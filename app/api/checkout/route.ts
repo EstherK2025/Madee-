@@ -4,7 +4,7 @@ import { products } from "@/lib/products";
 
 export const runtime = "nodejs";
 
-type IncomingItem = { slug: string; size: string; qty: number };
+type IncomingItem = { slug: string; size: string; qty: number; color?: string };
 
 function siteUrl(req: NextRequest): string {
   return (
@@ -20,7 +20,12 @@ function buildLines(items: IncomingItem[]) {
     const product = products.find((p) => p.slug === it.slug);
     const qty = Math.max(1, Math.min(20, Math.floor(Number(it.qty) || 0)));
     if (!product || qty <= 0) continue;
-    lines.push({ product, size: String(it.size || ""), qty });
+    lines.push({
+      product,
+      size: String(it.size || ""),
+      color: String(it.color || ""),
+      qty,
+    });
   }
   return lines;
 }
@@ -66,7 +71,10 @@ export async function POST(req: NextRequest) {
           unit_amount: l.product.price,
           product_data: {
             name: l.product.name,
-            description: l.size ? `Taille : ${l.size}` : undefined,
+            description:
+              [l.color && `Coloris : ${l.color}`, l.size && `Taille : ${l.size}`]
+                .filter(Boolean)
+                .join(" · ") || undefined,
           },
         },
       })),

@@ -13,11 +13,13 @@ import { products, type Product } from "./products";
 export type CartItem = {
   slug: string;
   size: string;
+  color: string;
   qty: number;
 };
 
 export type CartLine = CartItem & {
   product: Product;
+  image: string;
   lineTotal: number;
 };
 
@@ -27,9 +29,9 @@ type CartContextValue = {
   count: number;
   subtotal: number;
   ready: boolean;
-  add: (slug: string, size: string, qty?: number) => void;
-  setQty: (slug: string, size: string, qty: number) => void;
-  remove: (slug: string, size: string) => void;
+  add: (slug: string, size: string, color: string, qty?: number) => void;
+  setQty: (slug: string, size: string, color: string, qty: number) => void;
+  remove: (slug: string, size: string, color: string) => void;
   clear: () => void;
 };
 
@@ -61,32 +63,37 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     }
   }, [items, ready]);
 
-  const add = useCallback((slug: string, size: string, qty = 1) => {
-    setItems((prev) => {
-      const i = prev.findIndex((it) => it.slug === slug && it.size === size);
-      if (i >= 0) {
-        const next = [...prev];
-        next[i] = { ...next[i], qty: next[i].qty + qty };
-        return next;
-      }
-      return [...prev, { slug, size, qty }];
-    });
-  }, []);
+  const sameLine = (it: CartItem, slug: string, size: string, color: string) =>
+    it.slug === slug && it.size === size && it.color === color;
 
-  const setQty = useCallback((slug: string, size: string, qty: number) => {
-    setItems((prev) =>
-      prev
-        .map((it) =>
-          it.slug === slug && it.size === size ? { ...it, qty } : it
-        )
-        .filter((it) => it.qty > 0)
-    );
-  }, []);
+  const add = useCallback(
+    (slug: string, size: string, color: string, qty = 1) => {
+      setItems((prev) => {
+        const i = prev.findIndex((it) => sameLine(it, slug, size, color));
+        if (i >= 0) {
+          const next = [...prev];
+          next[i] = { ...next[i], qty: next[i].qty + qty };
+          return next;
+        }
+        return [...prev, { slug, size, color, qty }];
+      });
+    },
+    []
+  );
 
-  const remove = useCallback((slug: string, size: string) => {
-    setItems((prev) =>
-      prev.filter((it) => !(it.slug === slug && it.size === size))
-    );
+  const setQty = useCallback(
+    (slug: string, size: string, color: string, qty: number) => {
+      setItems((prev) =>
+        prev
+          .map((it) => (sameLine(it, slug, size, color) ? { ...it, qty } : it))
+          .filter((it) => it.qty > 0)
+      );
+    },
+    []
+  );
+
+  const remove = useCallback((slug: string, size: string, color: string) => {
+    setItems((prev) => prev.filter((it) => !sameLine(it, slug, size, color)));
   }, []);
 
   const clear = useCallback(() => setItems([]), []);
@@ -96,7 +103,14 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       .map((it) => {
         const product = products.find((p) => p.slug === it.slug);
         if (!product) return null;
-        return { ...it, product, lineTotal: product.price * it.qty };
+        const variant =
+          product.colors.find((c) => c.name === it.color) || product.colors[0];
+        return {
+          ...it,
+          product,
+          image: variant.images[0],
+          lineTotal: product.price * it.qty,
+        };
       })
       .filter(Boolean) as CartLine[];
   }, [items]);

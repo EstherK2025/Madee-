@@ -1,25 +1,18 @@
 import type { Product } from "@/lib/products";
+import { primaryImage } from "@/lib/products";
 
-// Vignette produit : vraie photo si `image` est renseigné,
-// sinon un dégradé élégant avec le nom de la pièce.
+// Vignette produit : première image du premier coloris.
 export default function ProductVisual({
   product,
-  label,
+  image,
 }: {
   product: Product;
-  label?: string;
+  image?: string;
 }) {
-  if (product.image) {
-    return (
-      <div className={`pvisual sw-${product.swatch}`}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={product.image} alt={product.name} />
-      </div>
-    );
-  }
   return (
-    <div className={`pvisual sw-${product.swatch}`}>
-      <span className="pvisual__name">{label ?? product.name}</span>
+    <div className="pvisual">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={image ?? primaryImage(product)} alt={product.name} loading="lazy" />
     </div>
   );
 }
