@@ -65,14 +65,6 @@ export default function Header() {
           <li>
             <Link href="/#valeurs">Nos valeurs</Link>
           </li>
-        </ul>
-
-        <Link href="/" className="nav__logo" aria-label="Madee — accueil">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/madee-logo-green.jpg" alt="Madee" />
-        </Link>
-
-        <ul className="nav__links nav__links--right">
           <li>
             <Link
               href="/journal"
@@ -81,13 +73,19 @@ export default function Header() {
               Journal
             </Link>
           </li>
-          <li>
-            <Link href="/panier" className="nav__cart">
-              Panier
-              {ready && count > 0 && <b>{count}</b>}
-            </Link>
-          </li>
         </ul>
+
+        <Link href="/" className="nav__logo" aria-label="Madee — accueil">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/madee-wordmark-green.png" alt="Madee" />
+        </Link>
+
+        <div className="nav__end">
+          <Link href="/panier" className="nav__cart">
+            Panier
+            {ready && count > 0 && <b>{count}</b>}
+          </Link>
+        </div>
       </nav>
     </header>
   );

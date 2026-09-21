@@ -9,6 +9,7 @@ export default function ProductCard({ product }: { product: Product }) {
       <div className="card__media">
         {product.badge && <span className="card__badge">{product.badge}</span>}
         <ProductVisual product={product} />
+        <span className="card__cta">Découvrir</span>
       </div>
       <div className="card__info">
         <span className="cat">{product.category}</span>

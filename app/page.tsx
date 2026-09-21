@@ -38,7 +38,11 @@ export default function HomePage() {
             </div>
             <div className="hero__panel">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/madee-logo-cream.jpg" alt="Madee" />
+              <img
+                className="hero__wordmark"
+                src="/madee-wordmark-cream.png"
+                alt="Madee"
+              />
             </div>
           </div>
         </div>
@@ -60,7 +64,8 @@ export default function HomePage() {
             <div className="maison__frame">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/madee-logo-cream.jpg"
+                className="maison__wordmark"
+                src="/madee-wordmark-cream.png"
                 alt="Le logo Madee sur fond vert profond"
               />
               <span className="maison__tag">Est. 2026</span>

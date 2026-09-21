@@ -7,7 +7,7 @@ export default function Footer() {
         <div className="footer__brand">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/madee-logo-cream.jpg"
+            src="/madee-wordmark-cream.png"
             alt="Madee"
             className="footer__logo"
           />
