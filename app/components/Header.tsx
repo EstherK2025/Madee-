@@ -81,8 +81,19 @@ export default function Header() {
         </Link>
 
         <div className="nav__end">
-          <Link href="/panier" className="nav__cart">
-            Panier
+          <Link href="/panier" className="nav__cart" aria-label="Panier">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M6 8h12l-1 12H7L6 8Z" />
+              <path d="M9 8V6a3 3 0 0 1 6 0v2" />
+            </svg>
             {ready && count > 0 && <b>{count}</b>}
           </Link>
         </div>

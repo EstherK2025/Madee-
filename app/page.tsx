@@ -35,6 +35,11 @@ export default function HomePage() {
                   La Maison
                 </Link>
               </Reveal>
+              <Reveal delay={0.32} className="hero__trust">
+                <span>Livraison offerte dès 150&nbsp;€</span>
+                <span>Paiement sécurisé</span>
+                <span>Retours 30 jours</span>
+              </Reveal>
             </div>
             <div className="hero__panel">
               {/* eslint-disable-next-line @next/next/no-img-element */}
