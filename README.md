@@ -54,12 +54,64 @@ puis **redeploy**. (Les mêmes clés vont dans `.env.local` pour le local.)
    - `PAYPAL_CLIENT_SECRET`
    - `PAYPAL_ENV` = `sandbox` (test) ou `live` (production)
 
+### Stripe — webhook (e-mail de confirmation après paiement carte)
+Pour que la cliente reçoive son e-mail après un paiement **carte**, créez un
+webhook Stripe :
+1. [Développeurs → Webhooks](https://dashboard.stripe.com/webhooks) → **Add
+   endpoint**.
+2. URL : `https://VOTRE-SITE/api/webhooks/stripe`
+3. Événement à écouter : **`checkout.session.completed`**.
+4. Copiez le **Signing secret** (`whsec_…`) dans `STRIPE_WEBHOOK_SECRET`.
+
+(PayPal n'a pas besoin de webhook : l'e-mail part automatiquement après le
+paiement.)
+
 ### Autres variables
 - `NEXT_PUBLIC_SITE_URL` : l'URL de votre site en production
   (ex. `https://madee.vercel.app` ou votre domaine). Sert aux redirections
-  après paiement.
+  après paiement et aux liens dans les e-mails.
 
 Voir **`.env.example`** pour la liste complète et commentée.
+
+---
+
+## 4. E-mails & numéro de suivi (Resend)
+
+La boutique envoie 3 e-mails, aux couleurs Madee :
+
+| Quand | À qui | Contenu |
+|-------|-------|---------|
+| Paiement confirmé | **Cliente** | Confirmation de commande |
+| Paiement confirmé | **Vous** (`SHOP_EMAIL`) | Nouvelle commande + bouton « Envoyer le suivi » |
+| Vous envoyez le suivi | **Cliente** | Colis expédié + numéro et lien de suivi |
+
+### Activer les e-mails (gratuit)
+1. Créez un compte sur [resend.com](https://resend.com) (offre gratuite :
+   3 000 e-mails/mois).
+2. **Clé API** : [API Keys](https://resend.com/api-keys) → copiez-la dans
+   `RESEND_API_KEY`.
+3. **Domaine d'envoi** : pour écrire à vos clientes, vérifiez un domaine dans
+   [Domains](https://resend.com/domains) (ajout de quelques lignes DNS).
+   Puis mettez `EMAIL_FROM="Madee <commandes@votredomaine.com>"`.
+   *Sans domaine vérifié, Resend n'autorise l'envoi qu'à votre propre adresse
+   (parfait pour tester).*
+4. `SHOP_EMAIL` = votre adresse (pour recevoir les commandes).
+
+### Le flux « numéro de suivi » (comme sur une vraie boutique)
+Le numéro de suivi est créé par le transporteur **au moment où vous déposez le
+colis** — impossible de l'obtenir avant. Le déroulé :
+
+1. La cliente commande → vous recevez l'e-mail « **Nouvelle commande à
+   expédier sous 48h** » avec un bouton.
+2. Vous préparez et **déposez le colis** (La Poste, Mondial Relay…), le
+   transporteur vous donne le numéro de suivi.
+3. Vous cliquez le bouton de l'e-mail (ou allez sur **`/admin/expedition`**),
+   vous collez le numéro + choisissez le transporteur, et **la cliente reçoit
+   aussitôt** son e-mail de suivi avec le bon lien de suivi.
+
+L'espace `/admin/expedition` est **protégé par mot de passe** : définissez
+`ADMIN_PASSWORD` (une variable d'environnement) — c'est le mot de passe que
+vous saisirez pour envoyer un suivi.
 
 ---
 
