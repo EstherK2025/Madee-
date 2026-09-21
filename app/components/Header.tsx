@@ -74,7 +74,12 @@ export default function Header() {
 
         <ul className="nav__links nav__links--right">
           <li>
-            <Link href="/a-propos">Journal</Link>
+            <Link
+              href="/journal"
+              className={isActive("/journal") ? "is-active" : ""}
+            >
+              Journal
+            </Link>
           </li>
           <li>
             <Link href="/panier" className="nav__cart">

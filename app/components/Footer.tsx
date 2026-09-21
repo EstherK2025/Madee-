@@ -18,22 +18,22 @@ export default function Footer() {
         </div>
         <nav className="footer__col">
           <h4>Boutique</h4>
-          <Link href="/boutique">Nouveautés</Link>
-          <Link href="/boutique">Abayas</Link>
-          <Link href="/boutique">Ensembles</Link>
-          <Link href="/boutique">Accessoires</Link>
+          <Link href="/boutique/nouveautes">Nouveautés</Link>
+          <Link href="/boutique/abayas">Abayas</Link>
+          <Link href="/boutique/ensembles">Ensembles</Link>
+          <Link href="/boutique/accessoires">Accessoires</Link>
         </nav>
         <nav className="footer__col">
           <h4>La Maison</h4>
           <Link href="/a-propos">Notre histoire</Link>
           <Link href="/#valeurs">Nos valeurs</Link>
-          <Link href="/a-propos">Le manifeste</Link>
+          <Link href="/journal">Le Journal</Link>
         </nav>
         <nav className="footer__col">
           <h4>Aide</h4>
-          <Link href="/a-propos">Nous contacter</Link>
-          <Link href="/a-propos">Livraison &amp; retours</Link>
-          <Link href="/a-propos">Guide des tailles</Link>
+          <Link href="/contact">Nous contacter</Link>
+          <Link href="/livraison-retours">Livraison &amp; retours</Link>
+          <Link href="/guide-des-tailles">Guide des tailles</Link>
         </nav>
         <nav className="footer__col">
           <h4>Suivez-nous</h4>

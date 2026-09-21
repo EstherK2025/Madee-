@@ -141,3 +141,51 @@ export function getProduct(slug: string): Product | undefined {
 export function featuredProducts(): Product[] {
   return products.filter((p) => p.featured);
 }
+
+// --- Catégories (pour la navigation de la boutique) ---
+export type Category = { slug: string; label: string; intro: string };
+
+export const CATEGORIES: Category[] = [
+  {
+    slug: "nouveautes",
+    label: "Nouveautés",
+    intro:
+      "Les dernières pièces de la collection Nour, tout juste arrivées.",
+  },
+  {
+    slug: "abayas",
+    label: "Abayas",
+    intro: "Des abayas fluides et enveloppantes, couvrantes avec grâce.",
+  },
+  {
+    slug: "ensembles",
+    label: "Ensembles",
+    intro: "Deux pièces, une allure — coordonnées et faciles à porter.",
+  },
+  {
+    slug: "robes",
+    label: "Robes",
+    intro: "Des robes longues et pudiques dans des matières nobles.",
+  },
+  {
+    slug: "manteaux",
+    label: "Manteaux",
+    intro: "Des pièces d'extérieur chaudes aux lignes épurées.",
+  },
+  {
+    slug: "accessoires",
+    label: "Accessoires",
+    intro: "Le geste final : foulards et pièces qui subliment la tenue.",
+  },
+];
+
+export function getCategory(slug: string): Category | undefined {
+  return CATEGORIES.find((c) => c.slug === slug);
+}
+
+export function productsByCategorySlug(slug: string): Product[] {
+  if (slug === "nouveautes") return products;
+  const cat = getCategory(slug);
+  if (!cat) return [];
+  return products.filter((p) => p.category === cat.label);
+}

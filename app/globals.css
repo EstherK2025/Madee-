@@ -267,8 +267,53 @@ main{flex:1 0 auto}
 .footer__col a:hover{opacity:1}
 .footer__bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-top:clamp(36px,5vw,56px);padding-top:22px;border-top:1px solid var(--line-dark);font-size:.76rem;color:var(--stone-2)}
 
+/* Barre de catégories (boutique) */
+.catnav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:clamp(28px,3vw,44px);padding-bottom:20px;border-bottom:1px solid var(--line)}
+.catnav__link{font-size:.76rem;letter-spacing:.05em;text-transform:uppercase;font-weight:600;color:var(--stone);padding:9px 16px;border:1px solid var(--line);border-radius:999px;transition:.25s var(--ease)}
+.catnav__link:hover{border-color:var(--ink);color:var(--ink)}
+.catnav__link.is-active{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+
+/* Listes d'info (aide) */
+.infolist{list-style:none;display:grid;gap:.7em;margin:.4em 0 1.4em}
+.infolist li{position:relative;padding-left:1.4em;color:var(--stone)}
+.infolist li::before{content:"";position:absolute;left:0;top:.65em;width:8px;height:1px;background:var(--green-700)}
+.infolist strong{color:var(--ink);font-weight:600}
+.inline-link{color:var(--ink);text-decoration:underline;text-underline-offset:3px;font-weight:500}
+.inline-link:hover{color:var(--green-700)}
+
+/* Tableau des tailles */
+.table-wrap{overflow-x:auto;margin:.6em 0 1.6em;border:1px solid var(--line);border-radius:2px}
+.size-table{width:100%;border-collapse:collapse;min-width:460px;font-variant-numeric:tabular-nums}
+.size-table th,.size-table td{padding:14px 18px;text-align:left;border-bottom:1px solid var(--line);font-size:.92rem}
+.size-table thead th{background:var(--paper-2);font-family:var(--font-sans);font-weight:600;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--stone)}
+.size-table tbody tr:last-child td{border-bottom:none}
+.size-table td[data-strong]{font-family:var(--font-display);font-weight:600;color:var(--ink)}
+
+/* Contact */
+.contact{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(32px,5vw,72px);align-items:start}
+.contact__aside h2{font-size:clamp(1.6rem,3vw,2.2rem);margin-bottom:.5em;font-weight:600}
+.contact__aside p{color:var(--stone);margin-bottom:1.6em;max-width:34ch}
+.contact__block{padding:16px 0;border-top:1px solid var(--line)}
+.contact__label{display:block;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);font-weight:600;margin-bottom:.4em}
+
+/* Formulaires */
+.form-input{width:100%;padding:14px 16px;border:1px solid var(--line);border-radius:2px;background:var(--white);font-family:var(--font-sans);font-size:.95rem;color:var(--ink);resize:vertical}
+.form-input:focus{outline:none;border-color:var(--ink)}
+
+/* Journal */
+.journal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,3vw,40px)}
+.post{display:flex;flex-direction:column}
+.post__media{aspect-ratio:4/3;border-radius:2px;overflow:hidden;display:flex;align-items:center;justify-content:center;margin-bottom:18px;transition:transform .5s var(--ease)}
+.post:hover .post__media{transform:translateY(-5px)}
+.post__cat{font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);font-weight:600}
+.post h3{font-size:1.32rem;margin:.5em 0 .5em;line-height:1.12;font-weight:600;letter-spacing:-.02em}
+.post p{color:var(--stone);font-size:.92rem;margin-bottom:1.1em}
+.post .link-arrow{margin-top:auto;align-self:flex-start}
+
 /* Responsive */
 @media (max-width:960px){
+  .contact{grid-template-columns:1fr}
+  .journal-grid{grid-template-columns:repeat(2,1fr)}
   .hero__grid{grid-template-columns:1fr;min-height:0}
   .hero__content{padding:clamp(40px,8vw,72px) 0}
   .hero__panel{border-left:none;border-top:1px solid var(--line);min-height:340px}
@@ -293,7 +338,7 @@ main{flex:1 0 auto}
   .section-head--split{flex-direction:column;align-items:flex-start}
 }
 @media (max-width:560px){
-  .valeurs__grid,.products-grid,.footer__grid{grid-template-columns:1fr}
+  .valeurs__grid,.products-grid,.footer__grid,.journal-grid{grid-template-columns:1fr}
   .hero__actions .btn{flex:1 1 100%}
   .cart__line{grid-template-columns:72px 1fr;grid-template-areas:"thumb info" "thumb right"}
   .cart__thumb{grid-area:thumb;width:72px}

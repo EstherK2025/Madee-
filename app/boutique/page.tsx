@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Reveal from "../components/Reveal";
-import ProductCard from "../components/ProductCard";
+import CategoryNav from "../components/CategoryNav";
+import ProductGrid from "../components/ProductGrid";
 import { products } from "@/lib/products";
 
 export const metadata: Metadata = {
@@ -14,11 +14,11 @@ export default function BoutiquePage() {
     <>
       <section className="pagehead">
         <div className="container">
-          <p className="eyebrow">La Collection Nour</p>
+          <p className="eyebrow">Collection Nour</p>
           <h1>La Boutique</h1>
           <p>
             Chaque pièce est pensée pour vous couvrir avec grâce et vous
-            révéler avec fierté. Des matières nobles, des coupes fluides, une
+            révéler avec fierté. Des matières nobles, des coupes nettes, une
             élégance qui vous ressemble.
           </p>
         </div>
@@ -26,13 +26,8 @@ export default function BoutiquePage() {
 
       <section className="section">
         <div className="container">
-          <div className="products-grid">
-            {products.map((p, i) => (
-              <Reveal key={p.slug} delay={(i % 3) * 0.08}>
-                <ProductCard product={p} />
-              </Reveal>
-            ))}
-          </div>
+          <CategoryNav />
+          <ProductGrid products={products} />
         </div>
       </section>
     </>
