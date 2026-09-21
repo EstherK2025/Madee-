@@ -83,7 +83,10 @@ export default function AProposPage() {
             <p>
               Une question, une envie, une collaboration ? Nous serions ravies
               d'échanger avec vous à{" "}
-              <a href="mailto:bonjour@madee.com" style={{ color: "var(--gold-soft)" }}>
+              <a
+                href="mailto:bonjour@madee.com"
+                style={{ color: "var(--paper)", textDecoration: "underline", textUnderlineOffset: "3px" }}
+              >
                 bonjour@madee.com
               </a>
               .

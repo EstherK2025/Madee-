@@ -77,7 +77,7 @@ export default function CheckoutButtons() {
       paypalRendered.current = true;
       window.paypal
         .Buttons({
-          style: { color: "gold", shape: "pill", label: "paypal", height: 48 },
+          style: { color: "gold", shape: "rect", label: "paypal", height: 48 },
           createOrder: async () => {
             const res = await fetch("/api/paypal/create", {
               method: "POST",

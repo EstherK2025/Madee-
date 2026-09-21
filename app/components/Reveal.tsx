@@ -36,7 +36,13 @@ export default function Reveal({
       { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
     );
     io.observe(el);
-    return () => io.disconnect();
+    // Filet de sécurité : le contenu ne reste jamais invisible
+    // (aperçus, impression, moteurs, défilement rapide…).
+    const failsafe = window.setTimeout(() => setShown(true), 1000);
+    return () => {
+      io.disconnect();
+      window.clearTimeout(failsafe);
+    };
   }, []);
 
   return (

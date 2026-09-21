@@ -106,7 +106,6 @@ export const products: Product[] = [
     category: "Manteaux",
     swatch: "e",
     sizes: ["XS", "S", "M", "L", "XL"],
-    featured: true,
     description:
       "Le manteau Layla vous enveloppe d'une chaleur feutrée. Une coupe cocon en laine mélangée, des lignes épurées et une longueur généreuse pour rester élégante quand le froid s'installe.",
     details: [

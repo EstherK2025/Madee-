@@ -10,7 +10,7 @@ export default function AnnuleePage() {
     <section className="section">
       <div className="container">
         <div className="confirm">
-          <div className="confirm__mark" style={{ background: "var(--gold)" }}>
+          <div className="confirm__mark" style={{ background: "var(--green-700)" }}>
             ↺
           </div>
           <h1>Paiement annulé</h1>
