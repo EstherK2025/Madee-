@@ -62,8 +62,8 @@ export default function Header() {
             <Link href="/#valeurs">{t("nav.valeurs")}</Link>
           </li>
           <li>
-            <Link href="/journal" className={isActive("/journal") ? "is-active" : ""}>
-              {t("nav.journal")}
+            <Link href="/contact" className={isActive("/contact") ? "is-active" : ""}>
+              {t("footer.contact")}
             </Link>
           </li>
           <li className="nav__links-switch">

@@ -24,7 +24,7 @@ export default function Footer() {
           <h4>{t("footer.house")}</h4>
           <Link href="/a-propos">{t("footer.ourStory")}</Link>
           <Link href="/#valeurs">{t("footer.values")}</Link>
-          <Link href="/journal">{t("footer.journal")}</Link>
+          <Link href="/contact">{t("footer.contact")}</Link>
         </nav>
         <nav className="footer__col">
           <h4>{t("footer.help")}</h4>
