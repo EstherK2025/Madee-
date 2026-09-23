@@ -1,7 +1,7 @@
 function Message() {
   return (
     <>
-      Livraison offerte dès 150&nbsp;€ · Nouvelle collection <em>Nour</em>{" "}
+      Livraison offerte dès 150&nbsp;€ · <em>Première collection</em>{" "}
       disponible · Retours gratuits sous 30 jours · Fait avec soin, porté avec
       fierté&nbsp;&nbsp;—&nbsp;&nbsp;
     </>

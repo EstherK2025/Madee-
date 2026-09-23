@@ -12,8 +12,8 @@ export default function Footer() {
             className="footer__logo"
           />
           <p>
-            L'élégance modeste, interculturelle et fière. Pensée pour la femme
-            qui s'affirme.
+            L'élégance, autrement. Des silhouettes pensées pour révéler votre
+            allure.
           </p>
         </div>
         <nav className="footer__col">

@@ -14,12 +14,12 @@ export default function BoutiquePage() {
     <>
       <section className="pagehead">
         <div className="container">
-          <p className="eyebrow">Collection Nour</p>
+          <p className="eyebrow">La collection</p>
           <h1>La Boutique</h1>
           <p>
-            Chaque pièce est pensée pour vous couvrir avec grâce et vous
-            révéler avec fierté. Des matières nobles, des coupes nettes, une
-            élégance qui vous ressemble.
+            Des silhouettes qui parlent d'elles-mêmes. Nos modèles, imaginés
+            pour celles qui recherchent une mode élégante, féminine et
+            sophistiquée.
           </p>
         </div>
       </section>

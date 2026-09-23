@@ -14,18 +14,18 @@ export default function HomePage() {
           <div className="hero__grid">
             <div className="hero__content">
               <Reveal as="p" className="eyebrow">
-                Mode modeste · Interculturelle
+                Première collection
               </Reveal>
               <h1 className="hero__title">
-                <span>Se couvrir,</span>
+                <span>L'élégance,</span>
                 <span>
-                  <em>s'affirmer.</em>
+                  <em>autrement.</em>
                 </span>
               </h1>
               <Reveal as="p" delay={0.1} className="hero__lead">
-                Madee habille la femme qui s'affirme. Des tenues pudiques et
-                précises, pensées pour célébrer la beauté de la femme noire et
-                lui offrir le confort d'être pleinement elle-même.
+                Des silhouettes pensées pour révéler votre allure. Découvrez
+                notre première collection, imaginée pour la femme qui apprécie
+                la simplicité, le raffinement et le caractère.
               </Reveal>
               <Reveal delay={0.18} className="hero__actions">
                 <Link href="/boutique" className="btn btn--solid">
@@ -69,10 +69,10 @@ export default function HomePage() {
         <div className="campaign__overlay" aria-hidden="true" />
         <div className="container campaign__content">
           <Reveal as="p" className="eyebrow">
-            Le film
+            La collection
           </Reveal>
           <Reveal as="h2" delay={0.08}>
-            La pudeur n'est pas une limite. <em>C'est une signature.</em>
+            Des silhouettes <em>qui parlent d'elles-mêmes.</em>
           </Reveal>
           <Reveal delay={0.16}>
             <Link href="/boutique" className="btn btn--cream">
@@ -82,7 +82,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* La Maison */}
+      {/* Notre histoire */}
       <section className="maison section" id="maison">
         <div className="container maison__grid">
           <Reveal className="maison__visual">
@@ -98,21 +98,18 @@ export default function HomePage() {
           </Reveal>
           <div className="maison__text">
             <Reveal as="p" className="eyebrow">
-              La Maison
+              Notre histoire
             </Reveal>
             <Reveal as="h2" delay={0.08}>
-              Une mode qui vous ressemble, sans vous demander de choisir.
+              Madee est née d'une vision simple.
             </Reveal>
             <Reveal as="p" delay={0.14}>
-              Madee est née d'une conviction simple : la pudeur et l'élégance ne
-              s'opposent pas. Nous créons des vêtements modestes et
-              interculturels qui traversent les origines et rassemblent les
-              femmes autour d'une même exigence de beauté et de dignité.
+              Créer des pièces élégantes qui permettent à chaque femme de se
+              sentir belle, confiante et pleinement elle-même.
             </Reveal>
             <Reveal as="p" delay={0.2}>
-              Des coupes nettes, des matières nobles et des couleurs profondes
-              qui subliment toutes les carnations. Se couvrir devient un geste
-              de style, jamais un renoncement.
+              Chaque silhouette est pensée avec soin, de la coupe aux détails,
+              pour créer une élégance intemporelle.
             </Reveal>
             <Reveal as="ul" delay={0.26} className="maison__stats">
               <li>
@@ -120,49 +117,49 @@ export default function HomePage() {
                 <span>Première collection</span>
               </li>
               <li>
-                <strong>100%</strong>
-                <span>Coupes pudiques</span>
+                <strong>∞</strong>
+                <span>Élégance intemporelle</span>
               </li>
               <li>
-                <strong>∞</strong>
-                <span>Cultures célébrées</span>
+                <strong>100%</strong>
+                <span>Pensé avec soin</span>
               </li>
             </Reveal>
           </div>
         </div>
       </section>
 
-      {/* Valeurs */}
+      {/* Signature — Simplicité, raffinement, caractère */}
       <section className="valeurs section" id="valeurs">
         <div className="container">
           <div className="section-head">
             <Reveal as="p" className="eyebrow">
-              Ce qui nous anime
+              Notre signature
             </Reveal>
             <Reveal as="h2" delay={0.08}>
-              Trois piliers, une même femme
+              Simplicité, raffinement, caractère
             </Reveal>
           </div>
           <div className="valeurs__grid">
             <Reveal as="article" className="value">
-              <h3>Modestie choisie</h3>
+              <h3>Simplicité</h3>
               <p>
-                Des vêtements couvrants et confortables qui laissent parler
-                votre présence, pas votre exposition. La pudeur comme liberté.
+                Des lignes épurées, une évidence dans chaque geste. La
+                simplicité comme forme la plus aboutie de l'élégance.
               </p>
             </Reveal>
             <Reveal as="article" delay={0.1} className="value">
-              <h3>Racines interculturelles</h3>
+              <h3>Raffinement</h3>
               <p>
-                Nous puisons dans la richesse des cultures du monde pour créer
-                des pièces qui dialoguent, s'assemblent et vous appartiennent.
+                Des matières nobles et des finitions soignées, de la coupe au
+                moindre détail. Le luxe se cache dans la précision.
               </p>
             </Reveal>
             <Reveal as="article" delay={0.2} className="value">
-              <h3>Affirmation de soi</h3>
+              <h3>Caractère</h3>
               <p>
-                Habiller la femme noire pour qu'elle se sente décrite, vue et
-                fière. Une garde-robe qui affirme, sans jamais crier.
+                Des silhouettes qui affirment une présence. Pour la femme qui
+                sait ce qu'elle veut et le porte avec allure.
               </p>
             </Reveal>
           </div>
@@ -175,7 +172,7 @@ export default function HomePage() {
           <div className="section-head section-head--split">
             <div>
               <Reveal as="p" className="eyebrow">
-                Collection Nour
+                La collection
               </Reveal>
               <Reveal as="h2" delay={0.08}>
                 La sélection
@@ -202,22 +199,22 @@ export default function HomePage() {
         <div className="container editorial__grid">
           <div className="editorial__text">
             <Reveal as="p" className="eyebrow">
-              Le manifeste
+              La collection
             </Reveal>
             <Reveal as="blockquote" delay={0.08}>
-              « Se couvrir n'a jamais voulu dire se cacher. Chaque drapé est une
-              déclaration : je suis pudique, je suis puissante, je suis
-              pleinement moi. »
+              « Des silhouettes qui parlent d'elles-mêmes — imaginées pour
+              celles qui recherchent une mode élégante, féminine et
+              sophistiquée. »
             </Reveal>
             <Reveal as="p" delay={0.16} className="editorial__sign">
-              — L'équipe Madee
+              — Madee
             </Reveal>
           </div>
           <Reveal delay={0.1} className="editorial__panel">
             <div className="editorial__word">Madee.</div>
             <p>
-              Un nom, une promesse : celle d'une garde-robe qui honore votre
-              foi, votre culture et votre force, sans compromis sur le style.
+              Un nom, une promesse : celle d'une élégance intemporelle, pensée
+              dans le moindre détail pour révéler votre allure.
             </p>
           </Reveal>
         </div>

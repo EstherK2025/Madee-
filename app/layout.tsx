@@ -10,15 +10,15 @@ export const metadata: Metadata = {
     process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
   ),
   title: {
-    default: "Madee — L'élégance modeste, réinventée",
+    default: "Madee — L'élégance, autrement",
     template: "%s · Madee",
   },
   description:
-    "Madee, maison de mode modeste et interculturelle. Des pièces raffinées qui permettent à la femme noire de s'affirmer et de se sentir pleinement elle-même.",
+    "Madee, maison de mode. Des pièces élégantes qui permettent à chaque femme de se sentir belle, confiante et pleinement elle-même.",
   openGraph: {
-    title: "Madee — L'élégance modeste, réinventée",
+    title: "Madee — L'élégance, autrement",
     description:
-      "Maison de mode modeste et interculturelle, pensée pour la femme qui s'affirme.",
+      "Des silhouettes pensées pour révéler votre allure. Découvrez notre première collection.",
     type: "website",
   },
 };
