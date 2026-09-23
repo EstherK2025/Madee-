@@ -134,6 +134,16 @@ main{flex:1 0 auto}
 .statement h2{font-size:clamp(1.9rem,5vw,4rem);font-weight:500;line-height:1.02;letter-spacing:-.03em;max-width:20ch}
 .statement em{font-style:normal;color:var(--stone-2)}
 
+/* Film de campagne (vidéo pleine largeur) */
+.campaign{position:relative;min-height:min(76vh,660px);display:flex;align-items:flex-end;overflow:hidden;background:var(--green)}
+.campaign__video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.campaign__overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,33,19,.15) 0%,rgba(26,33,19,.15) 40%,rgba(26,33,19,.68) 100%)}
+.campaign__content{position:relative;z-index:1;color:var(--paper);max-width:640px;padding-block:clamp(40px,6vw,72px)}
+.campaign__content .eyebrow{color:var(--paper)}
+.campaign__content .eyebrow::before{background:rgba(244,241,231,.6)}
+.campaign__content h2{font-size:clamp(1.9rem,4.6vw,3.6rem);font-weight:600;line-height:1.04;letter-spacing:-.03em;color:var(--paper);margin:.4em 0 .9em;max-width:18ch}
+.campaign__content em{font-style:normal;color:var(--stone-2)}
+
 /* Titres de section */
 .section-head{max-width:720px;margin-bottom:clamp(34px,4vw,58px)}
 .section-head h2{font-size:clamp(1.9rem,4vw,3.1rem);margin-top:.5em;font-weight:600}

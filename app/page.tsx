@@ -53,11 +53,31 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Statement */}
-      <section className="statement">
-        <div className="container statement__inner">
-          <Reveal as="h2">
+      {/* Film de campagne */}
+      <section className="campaign">
+        <video
+          className="campaign__video"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          poster="/madee-logo-cream.jpg"
+        >
+          <source src="/madee-campaign.mp4" type="video/mp4" />
+        </video>
+        <div className="campaign__overlay" aria-hidden="true" />
+        <div className="container campaign__content">
+          <Reveal as="p" className="eyebrow">
+            Le film
+          </Reveal>
+          <Reveal as="h2" delay={0.08}>
             La pudeur n'est pas une limite. <em>C'est une signature.</em>
+          </Reveal>
+          <Reveal delay={0.16}>
+            <Link href="/boutique" className="btn btn--cream">
+              Découvrir la collection
+            </Link>
           </Reveal>
         </div>
       </section>
