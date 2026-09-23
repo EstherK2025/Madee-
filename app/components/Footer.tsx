@@ -1,56 +1,47 @@
+"use client";
+
 import Link from "next/link";
+import { useT } from "@/lib/i18n";
 
 export default function Footer() {
+  const t = useT();
   return (
     <footer className="footer">
       <div className="container footer__grid">
         <div className="footer__brand">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/madee-wordmark-cream.png"
-            alt="Madee"
-            className="footer__logo"
-          />
-          <p>
-            L'élégance, autrement. Des silhouettes pensées pour révéler votre
-            allure.
-          </p>
+          <img src="/madee-wordmark-cream.png" alt="Madee" className="footer__logo" />
+          <p>{t("footer.tagline")}</p>
         </div>
         <nav className="footer__col">
-          <h4>Boutique</h4>
-          <Link href="/boutique/nouveautes">Nouveautés</Link>
-          <Link href="/boutique/ensembles">Ensembles</Link>
-          <Link href="/boutique/hauts">Hauts</Link>
-          <Link href="/boutique">Toute la collection</Link>
+          <h4>{t("footer.shop")}</h4>
+          <Link href="/boutique/nouveautes">{t("footer.newIn")}</Link>
+          <Link href="/boutique/ensembles">{t("footer.ensembles")}</Link>
+          <Link href="/boutique/hauts">{t("footer.hauts")}</Link>
+          <Link href="/boutique">{t("footer.allCollection")}</Link>
         </nav>
         <nav className="footer__col">
-          <h4>La Maison</h4>
-          <Link href="/a-propos">Notre histoire</Link>
-          <Link href="/#valeurs">Nos valeurs</Link>
-          <Link href="/journal">Le Journal</Link>
+          <h4>{t("footer.house")}</h4>
+          <Link href="/a-propos">{t("footer.ourStory")}</Link>
+          <Link href="/#valeurs">{t("footer.values")}</Link>
+          <Link href="/journal">{t("footer.journal")}</Link>
         </nav>
         <nav className="footer__col">
-          <h4>Aide</h4>
-          <Link href="/contact">Nous contacter</Link>
-          <Link href="/livraison-retours">Livraison &amp; retours</Link>
-          <Link href="/guide-des-tailles">Guide des tailles</Link>
+          <h4>{t("footer.help")}</h4>
+          <Link href="/contact">{t("footer.contact")}</Link>
+          <Link href="/livraison-retours">{t("footer.shipping")}</Link>
+          <Link href="/guide-des-tailles">{t("footer.sizeGuide")}</Link>
         </nav>
         <nav className="footer__col">
-          <h4>Suivez-nous</h4>
-          <a href="https://instagram.com" target="_blank" rel="noreferrer">
-            Instagram
-          </a>
-          <a href="https://pinterest.com" target="_blank" rel="noreferrer">
-            Pinterest
-          </a>
-          <a href="https://tiktok.com" target="_blank" rel="noreferrer">
-            TikTok
-          </a>
+          <h4>{t("footer.follow")}</h4>
+          <a href="https://instagram.com" target="_blank" rel="noreferrer">Instagram</a>
+          <a href="https://pinterest.com" target="_blank" rel="noreferrer">Pinterest</a>
+          <a href="https://tiktok.com" target="_blank" rel="noreferrer">TikTok</a>
         </nav>
       </div>
       <div className="container footer__bottom">
-        <span>© {new Date().getFullYear()} Madee. Tous droits réservés.</span>
-        <span>Confidentialité · CGV · Mentions légales</span>
+        <span>© {new Date().getFullYear()} Madee. {t("footer.rights")}</span>
+        <span>{t("footer.legal")}</span>
       </div>
     </footer>
   );

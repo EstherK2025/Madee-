@@ -1,22 +1,26 @@
+"use client";
+
 import Link from "next/link";
-import { CATEGORIES } from "@/lib/products";
+import { CATEGORY_SLUGS } from "@/lib/products";
+import { useT } from "@/lib/i18n";
 
 export default function CategoryNav({ active }: { active?: string }) {
+  const t = useT();
   return (
     <nav className="catnav" aria-label="Catégories">
       <Link
         href="/boutique"
         className={`catnav__link ${!active ? "is-active" : ""}`}
       >
-        Tout
+        {t("cat.all")}
       </Link>
-      {CATEGORIES.map((c) => (
+      {CATEGORY_SLUGS.map((slug) => (
         <Link
-          key={c.slug}
-          href={`/boutique/${c.slug}`}
-          className={`catnav__link ${active === c.slug ? "is-active" : ""}`}
+          key={slug}
+          href={`/boutique/${slug}`}
+          className={`catnav__link ${active === slug ? "is-active" : ""}`}
         >
-          {c.label}
+          {t(`cat.${slug}.label`)}
         </Link>
       ))}
     </nav>

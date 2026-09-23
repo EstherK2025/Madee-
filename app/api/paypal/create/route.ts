@@ -10,17 +10,18 @@ export const runtime = "nodejs";
 
 type IncomingItem = { slug: string; size: string; qty: number; color?: string };
 
-function euro(cents: number): string {
-  return (cents / 100).toFixed(2);
-}
+// PayPal encaisse en EUR (le SDK et la commande doivent partager la devise).
+const cur = "EUR";
 
 export async function POST(req: NextRequest) {
-  let body: { items?: IncomingItem[] };
+  let body: { items?: IncomingItem[]; currency?: string };
   try {
     body = await req.json();
   } catch {
     return NextResponse.json({ error: "Requête invalide" }, { status: 400 });
   }
+
+  const money = (cents: number) => (cents / 100).toFixed(2);
 
   // Recalcul serveur à partir du catalogue
   const items = [];
@@ -34,7 +35,7 @@ export async function POST(req: NextRequest) {
     items.push({
       name: label.slice(0, 127),
       quantity: String(qty),
-      unit_amount: { currency_code: "EUR", value: euro(product.price) },
+      unit_amount: { currency_code: cur, value: money(product.price) },
     });
   }
 
@@ -60,10 +61,10 @@ export async function POST(req: NextRequest) {
         purchase_units: [
           {
             amount: {
-              currency_code: "EUR",
-              value: euro(totalCents),
+              currency_code: cur,
+              value: money(totalCents),
               breakdown: {
-                item_total: { currency_code: "EUR", value: euro(totalCents) },
+                item_total: { currency_code: cur, value: money(totalCents) },
               },
             },
             items,

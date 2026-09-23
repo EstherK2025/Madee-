@@ -3,11 +3,12 @@
 import { useEffect } from "react";
 import Link from "next/link";
 import { useCart } from "@/lib/cart-context";
+import { useT } from "@/lib/i18n";
 
 export default function SuccesPage() {
   const { clear } = useCart();
+  const t = useT();
 
-  // La commande est passée : on vide le panier (utile après un retour Stripe).
   useEffect(() => {
     clear();
   }, [clear]);
@@ -17,21 +18,15 @@ export default function SuccesPage() {
       <div className="container">
         <div className="confirm">
           <div className="confirm__mark">✓</div>
-          <h1>Merci pour votre commande</h1>
-          <p>
-            Votre commande a bien été enregistrée. Vous recevrez un e-mail de
-            confirmation avec le suivi de votre colis.
-          </p>
-          <p>
-            Nous préparons vos pièces Madee avec le plus grand soin. Bienvenue
-            dans le cercle.
-          </p>
+          <h1>{t("confirm.successTitle")}</h1>
+          <p>{t("confirm.successP1")}</p>
+          <p>{t("confirm.successP2")}</p>
           <div className="hero__actions" style={{ justifyContent: "center" }}>
             <Link href="/boutique" className="btn btn--solid">
-              Continuer mes achats
+              {t("confirm.continue")}
             </Link>
             <Link href="/" className="btn btn--ghost">
-              Retour à l'accueil
+              {t("confirm.home")}
             </Link>
           </div>
         </div>

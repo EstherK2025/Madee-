@@ -1,25 +1,19 @@
-import type { Metadata } from "next";
+"use client";
+
 import Link from "next/link";
 import Reveal from "../components/Reveal";
 import { articles } from "@/lib/journal";
-
-export const metadata: Metadata = {
-  title: "Le Journal",
-  description:
-    "Inspirations, art de porter et regards sur la mode modeste et interculturelle.",
-};
+import { useLocale, loc } from "@/lib/i18n";
 
 export default function JournalPage() {
+  const { t, locale } = useLocale();
   return (
     <>
       <section className="pagehead">
         <div className="container">
-          <p className="eyebrow">Le Journal</p>
-          <h1>Inspirations &amp; art de porter</h1>
-          <p>
-            Nos regards sur la mode modeste, les cultures qui nous inspirent et
-            les femmes qui portent Madee.
-          </p>
+          <p className="eyebrow">{t("journal.eyebrow")}</p>
+          <h1>{t("journal.title")}</h1>
+          <p>{t("journal.intro")}</p>
         </div>
       </section>
 
@@ -33,12 +27,12 @@ export default function JournalPage() {
                     <span className="pvisual__name">Madee</span>
                   </div>
                   <span className="post__cat">
-                    {a.category} · {a.date}
+                    {loc(a.category, locale)} · {loc(a.date, locale)}
                   </span>
-                  <h3>{a.title}</h3>
-                  <p>{a.excerpt}</p>
+                  <h3>{loc(a.title, locale)}</h3>
+                  <p>{loc(a.excerpt, locale)}</p>
                   <span className="link-arrow">
-                    Lire <span>→</span>
+                    {t("journal.read")} <span>→</span>
                   </span>
                 </Link>
               </Reveal>

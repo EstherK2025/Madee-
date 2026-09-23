@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { CartProvider } from "@/lib/cart-context";
+import { LocaleProvider } from "@/lib/i18n";
+import { CurrencyProvider } from "@/lib/currency";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Announce from "./components/Announce";
@@ -44,12 +46,16 @@ export default function RootLayout({
         <link rel="icon" type="image/jpeg" href="/madee-logo-green.jpg" />
       </head>
       <body>
-        <CartProvider>
-          <Announce />
-          <Header />
-          <main>{children}</main>
-          <Footer />
-        </CartProvider>
+        <LocaleProvider>
+          <CurrencyProvider>
+            <CartProvider>
+              <Announce />
+              <Header />
+              <main>{children}</main>
+              <Footer />
+            </CartProvider>
+          </CurrencyProvider>
+        </LocaleProvider>
       </body>
     </html>
   );

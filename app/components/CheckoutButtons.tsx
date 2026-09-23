@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useCart } from "@/lib/cart-context";
+import { useT } from "@/lib/i18n";
+import { useCurrency } from "@/lib/currency";
 
 declare global {
   interface Window {
@@ -15,6 +17,8 @@ const STRIPE_KEY = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || "";
 
 export default function CheckoutButtons() {
   const { items, clear } = useCart();
+  const t = useT();
+  const { code } = useCurrency();
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -33,7 +37,7 @@ export default function CheckoutButtons() {
       const res = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ items }),
+        body: JSON.stringify({ items, currency: code }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Erreur");
@@ -42,7 +46,7 @@ export default function CheckoutButtons() {
         window.location.href = data.url;
       }
     } catch (e: any) {
-      setError(e.message || "Le paiement a échoué. Réessayez.");
+      setError(e.message || t("pay.error"));
       setLoading(false);
     }
   };
@@ -55,14 +59,14 @@ export default function CheckoutButtons() {
       const res = await fetch("/api/paypal/create", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ items }),
+        body: JSON.stringify({ items, currency: code }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Erreur");
       clear();
       router.push("/commande/succes?sim=paypal");
     } catch (e: any) {
-      setError(e.message || "Le paiement a échoué. Réessayez.");
+      setError(e.message || t("pay.error"));
       setLoading(false);
     }
   };
@@ -129,9 +133,7 @@ export default function CheckoutButtons() {
 
   return (
     <div className="summary__pay">
-      {demoMode && (
-        <span className="sim-badge">Mode démonstration</span>
-      )}
+      {demoMode && <span className="sim-badge">{t("pay.demo")}</span>}
 
       <button
         type="button"
@@ -139,10 +141,10 @@ export default function CheckoutButtons() {
         onClick={payStripe}
         disabled={loading}
       >
-        {loading ? "Redirection…" : "Payer par carte"}
+        {loading ? t("pay.redirect") : t("pay.card")}
       </button>
 
-      <div className="paydivider">ou</div>
+      <div className="paydivider">{t("pay.or")}</div>
 
       {PAYPAL_CLIENT_ID ? (
         <div className="paypal-box" ref={paypalBox} />
@@ -153,17 +155,15 @@ export default function CheckoutButtons() {
           onClick={payPaypalDemo}
           disabled={loading}
         >
-          Payer avec PayPal
+          {t("pay.paypal")}
         </button>
       )}
 
       {error && <p className="pay-error">{error}</p>}
 
       <p className="pay-note">
-        Paiement sécurisé. Vos coordonnées bancaires ne transitent jamais par
-        nos serveurs.
-        {demoMode &&
-          " Aucune clé de paiement n'est encore configurée : les commandes sont simulées."}
+        {t("pay.secure")}
+        {demoMode && t("pay.demoNote")}
       </p>
     </div>
   );

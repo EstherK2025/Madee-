@@ -1,11 +1,7 @@
-import type { Metadata } from "next";
-import Link from "next/link";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Guide des tailles",
-  description:
-    "Trouvez votre taille Madee grâce à notre tableau de mensurations et nos conseils.",
-};
+import Link from "next/link";
+import { useT } from "@/lib/i18n";
 
 const ROWS = [
   { taille: "XS", fr: "34", poitrine: "82", tour: "64", hanches: "90" },
@@ -16,32 +12,29 @@ const ROWS = [
 ];
 
 export default function GuideDesTaillesPage() {
+  const t = useT();
   return (
     <>
       <section className="pagehead">
         <div className="container">
-          <p className="eyebrow">Aide</p>
-          <h1>Guide des tailles</h1>
-          <p>
-            Nos coupes sont pensées amples et couvrantes. En cas d'hésitation
-            entre deux tailles, choisissez la plus petite pour un tombé ajusté,
-            la plus grande pour un port très fluide.
-          </p>
+          <p className="eyebrow">{t("guide.eyebrow")}</p>
+          <h1>{t("guide.title")}</h1>
+          <p>{t("guide.intro")}</p>
         </div>
       </section>
 
       <section className="section">
         <div className="container prose">
-          <h2>Mensurations (en centimètres)</h2>
+          <h2>{t("guide.tableTitle")}</h2>
           <div className="table-wrap">
             <table className="size-table">
               <thead>
                 <tr>
-                  <th>Taille</th>
-                  <th>FR</th>
-                  <th>Poitrine</th>
-                  <th>Tour de taille</th>
-                  <th>Hanches</th>
+                  <th>{t("guide.hSize")}</th>
+                  <th>{t("guide.hFr")}</th>
+                  <th>{t("guide.hBust")}</th>
+                  <th>{t("guide.hWaist")}</th>
+                  <th>{t("guide.hHips")}</th>
                 </tr>
               </thead>
               <tbody>
@@ -58,29 +51,16 @@ export default function GuideDesTaillesPage() {
             </table>
           </div>
 
-          <h2>Comment se mesurer</h2>
+          <h2>{t("guide.howTitle")}</h2>
           <ul className="infolist">
-            <li>
-              <strong>Poitrine</strong> — mesurez à l'endroit le plus fort, le
-              mètre bien horizontal.
-            </li>
-            <li>
-              <strong>Tour de taille</strong> — au creux de la taille, sans
-              serrer.
-            </li>
-            <li>
-              <strong>Hanches</strong> — à l'endroit le plus large, pieds
-              joints.
-            </li>
+            <li>{t("guide.m1")}</li>
+            <li>{t("guide.m2")}</li>
+            <li>{t("guide.m3")}</li>
           </ul>
-          <p>
-            Un doute subsiste ? Écrivez-nous votre taille habituelle et vos
-            mensurations, nous vous conseillons la coupe idéale.
-          </p>
-
+          <p>{t("guide.doubt")}</p>
           <p style={{ marginTop: "2.4em" }}>
             <Link href="/contact" className="btn btn--solid">
-              Demander conseil
+              {t("guide.cta")}
             </Link>
           </p>
         </div>

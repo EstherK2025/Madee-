@@ -1,87 +1,48 @@
-import type { Metadata } from "next";
-import Link from "next/link";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Livraison & retours",
-  description:
-    "Délais, frais et conditions de livraison et de retour des commandes Madee.",
-};
+import Link from "next/link";
+import { useT } from "@/lib/i18n";
 
 export default function LivraisonRetoursPage() {
+  const t = useT();
   return (
     <>
       <section className="pagehead">
         <div className="container">
-          <p className="eyebrow">Aide</p>
-          <h1>Livraison &amp; retours</h1>
-          <p>
-            Tout ce qu'il faut savoir pour recevoir et, si besoin, renvoyer vos
-            pièces Madee en toute sérénité.
-          </p>
+          <p className="eyebrow">{t("ship.eyebrow")}</p>
+          <h1>{t("ship.title")}</h1>
+          <p>{t("ship.intro")}</p>
         </div>
       </section>
 
       <section className="section">
         <div className="container prose">
-          <h2>Livraison</h2>
-          <p>
-            Vos commandes sont préparées avec soin et expédiées sous 2 jours
-            ouvrés. Vous recevez un e-mail avec votre numéro de suivi dès que
-            votre colis quitte notre atelier.
-          </p>
+          <h2>{t("ship.h1")}</h2>
+          <p>{t("ship.p1")}</p>
           <ul className="infolist">
-            <li>
-              <strong>Livraison offerte</strong> dès 150&nbsp;€ d'achat.
-            </li>
-            <li>
-              <strong>France métropolitaine</strong> — 4,90&nbsp;€, 2 à 4 jours
-              ouvrés.
-            </li>
-            <li>
-              <strong>Belgique, Suisse, Luxembourg</strong> — 9,90&nbsp;€, 3 à 6
-              jours ouvrés.
-            </li>
-            <li>
-              <strong>Canada &amp; International</strong> — calculé au moment du
-              paiement, 5 à 10 jours ouvrés.
-            </li>
+            <li>{t("ship.l1")}</li>
+            <li>{t("ship.l2")}</li>
+            <li>{t("ship.l3")}</li>
+            <li>{t("ship.l4")}</li>
           </ul>
-          <p>
-            Les éventuels droits de douane hors Union européenne sont à la
-            charge du destinataire.
-          </p>
+          <p>{t("ship.p2")}</p>
 
-          <h2>Retours &amp; échanges</h2>
-          <p>
-            Une pièce ne vous convient pas ? Vous disposez de{" "}
-            <strong>30 jours</strong> après réception pour nous la retourner.
-            Les articles doivent être non portés, non lavés, avec leur
-            étiquette d'origine.
-          </p>
+          <h2>{t("ship.h2")}</h2>
+          <p>{t("ship.p3")}</p>
           <ul className="infolist">
-            <li>
-              <strong>Retours gratuits</strong> en France métropolitaine.
-            </li>
-            <li>Remboursement sous 5 à 7 jours après réception du colis.</li>
-            <li>
-              Échange de taille possible, sous réserve de disponibilité de la
-              pièce.
-            </li>
+            <li>{t("ship.r1")}</li>
+            <li>{t("ship.r2")}</li>
+            <li>{t("ship.r3")}</li>
           </ul>
           <p>
-            Pour lancer un retour ou un échange, écrivez-nous à{" "}
-            <a
-              className="inline-link"
-              href="mailto:bonjour@madee.com"
-            >
-              bonjour@madee.com
-            </a>{" "}
-            en précisant votre numéro de commande — nous vous guidons pas à pas.
+            {t("ship.p4a")}{" "}
+            <a className="inline-link" href="mailto:bonjour@madee.com">bonjour@madee.com</a>{" "}
+            {t("ship.p4b")}
           </p>
 
           <p style={{ marginTop: "2.4em" }}>
             <Link href="/contact" className="btn btn--solid">
-              Une question ? Contactez-nous
+              {t("ship.cta")}
             </Link>
           </p>
         </div>

@@ -104,7 +104,8 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         const product = products.find((p) => p.slug === it.slug);
         if (!product) return null;
         const variant =
-          product.colors.find((c) => c.name === it.color) || product.colors[0];
+          product.colors.find((c) => c.name.fr === it.color) ||
+          product.colors[0];
         return {
           ...it,
           product,

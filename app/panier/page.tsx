@@ -1,18 +1,16 @@
-import type { Metadata } from "next";
-import CartView from "../components/CartView";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Mon panier",
-  description: "Votre sélection Madee, prête à être commandée.",
-};
+import CartView from "../components/CartView";
+import { useT } from "@/lib/i18n";
 
 export default function PanierPage() {
+  const t = useT();
   return (
     <section className="section">
       <div className="container">
         <div className="section-head" style={{ marginBottom: "2.4rem" }}>
-          <p className="eyebrow">Votre sélection</p>
-          <h2>Mon panier</h2>
+          <p className="eyebrow">{t("cart.eyebrow")}</p>
+          <h2>{t("cart.title")}</h2>
         </div>
         <CartView />
       </div>

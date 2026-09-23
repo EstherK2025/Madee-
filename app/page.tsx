@@ -1,59 +1,57 @@
+"use client";
+
 import Link from "next/link";
 import Reveal from "./components/Reveal";
 import ProductCard from "./components/ProductCard";
 import { featuredProducts } from "@/lib/products";
+import { useT } from "@/lib/i18n";
 
 export default function HomePage() {
+  const t = useT();
   const featured = featuredProducts();
 
   return (
     <>
-      {/* Hero — split éditorial */}
+      {/* Hero */}
       <section className="hero">
         <div className="container">
           <div className="hero__grid">
             <div className="hero__content">
               <Reveal as="p" className="eyebrow">
-                Première collection
+                {t("home.hero.eyebrow")}
               </Reveal>
               <h1 className="hero__title">
-                <span>L'élégance,</span>
+                <span>{t("home.hero.title1")}</span>
                 <span>
-                  <em>autrement.</em>
+                  <em>{t("home.hero.title2")}</em>
                 </span>
               </h1>
               <Reveal as="p" delay={0.1} className="hero__lead">
-                Des silhouettes pensées pour révéler votre allure. Découvrez
-                notre première collection, imaginée pour la femme qui apprécie
-                la simplicité, le raffinement et le caractère.
+                {t("home.hero.lead")}
               </Reveal>
               <Reveal delay={0.18} className="hero__actions">
                 <Link href="/boutique" className="btn btn--solid">
-                  Voir la collection
+                  {t("home.hero.cta1")}
                 </Link>
                 <Link href="/a-propos" className="btn btn--ghost">
-                  La Maison
+                  {t("home.hero.cta2")}
                 </Link>
               </Reveal>
               <Reveal delay={0.32} className="hero__trust">
-                <span>Livraison offerte dès 150&nbsp;€</span>
-                <span>Paiement sécurisé</span>
-                <span>Retours 30 jours</span>
+                <span>{t("home.trust.shipping")}</span>
+                <span>{t("home.trust.secure")}</span>
+                <span>{t("home.trust.returns")}</span>
               </Reveal>
             </div>
             <div className="hero__panel">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                className="hero__wordmark"
-                src="/madee-wordmark-cream.png"
-                alt="Madee"
-              />
+              <img className="hero__wordmark" src="/madee-wordmark-cream.png" alt="Madee" />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Film de campagne */}
+      {/* Film */}
       <section className="campaign">
         <video
           className="campaign__video"
@@ -69,14 +67,14 @@ export default function HomePage() {
         <div className="campaign__overlay" aria-hidden="true" />
         <div className="container campaign__content">
           <Reveal as="p" className="eyebrow">
-            La collection
+            {t("home.film.eyebrow")}
           </Reveal>
           <Reveal as="h2" delay={0.08}>
-            Des silhouettes <em>qui parlent d'elles-mêmes.</em>
+            {t("home.film.title1")} <em>{t("home.film.title2")}</em>
           </Reveal>
           <Reveal delay={0.16}>
             <Link href="/boutique" className="btn btn--cream">
-              Découvrir la collection
+              {t("home.film.cta")}
             </Link>
           </Reveal>
         </div>
@@ -88,79 +86,64 @@ export default function HomePage() {
           <Reveal className="maison__visual">
             <div className="maison__frame">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                className="maison__wordmark"
-                src="/madee-wordmark-cream.png"
-                alt="Le logo Madee sur fond vert profond"
-              />
+              <img className="maison__wordmark" src="/madee-wordmark-cream.png" alt="Madee" />
               <span className="maison__tag">Est. 2026</span>
             </div>
           </Reveal>
           <div className="maison__text">
             <Reveal as="p" className="eyebrow">
-              Notre histoire
+              {t("home.story.eyebrow")}
             </Reveal>
             <Reveal as="h2" delay={0.08}>
-              Madee est née d'une vision simple.
+              {t("home.story.title")}
             </Reveal>
             <Reveal as="p" delay={0.14}>
-              Créer des pièces élégantes qui permettent à chaque femme de se
-              sentir belle, confiante et pleinement elle-même.
+              {t("home.story.p1")}
             </Reveal>
             <Reveal as="p" delay={0.2}>
-              Chaque silhouette est pensée avec soin, de la coupe aux détails,
-              pour créer une élégance intemporelle.
+              {t("home.story.p2")}
             </Reveal>
             <Reveal as="ul" delay={0.26} className="maison__stats">
               <li>
-                <strong>2026</strong>
-                <span>Première collection</span>
+                <strong>{t("home.story.s1n")}</strong>
+                <span>{t("home.story.s1l")}</span>
               </li>
               <li>
-                <strong>∞</strong>
-                <span>Élégance intemporelle</span>
+                <strong>{t("home.story.s2n")}</strong>
+                <span>{t("home.story.s2l")}</span>
               </li>
               <li>
-                <strong>100%</strong>
-                <span>Pensé avec soin</span>
+                <strong>{t("home.story.s3n")}</strong>
+                <span>{t("home.story.s3l")}</span>
               </li>
             </Reveal>
           </div>
         </div>
       </section>
 
-      {/* Signature — Simplicité, raffinement, caractère */}
+      {/* Signature */}
       <section className="valeurs section" id="valeurs">
         <div className="container">
           <div className="section-head">
             <Reveal as="p" className="eyebrow">
-              Notre signature
+              {t("home.sig.eyebrow")}
             </Reveal>
             <Reveal as="h2" delay={0.08}>
-              Simplicité, raffinement, caractère
+              {t("home.sig.title")}
             </Reveal>
           </div>
           <div className="valeurs__grid">
             <Reveal as="article" className="value">
-              <h3>Simplicité</h3>
-              <p>
-                Des lignes épurées, une évidence dans chaque geste. La
-                simplicité comme forme la plus aboutie de l'élégance.
-              </p>
+              <h3>{t("home.sig.v1t")}</h3>
+              <p>{t("home.sig.v1p")}</p>
             </Reveal>
             <Reveal as="article" delay={0.1} className="value">
-              <h3>Raffinement</h3>
-              <p>
-                Des matières nobles et des finitions soignées, de la coupe au
-                moindre détail. Le luxe se cache dans la précision.
-              </p>
+              <h3>{t("home.sig.v2t")}</h3>
+              <p>{t("home.sig.v2p")}</p>
             </Reveal>
             <Reveal as="article" delay={0.2} className="value">
-              <h3>Caractère</h3>
-              <p>
-                Des silhouettes qui affirment une présence. Pour la femme qui
-                sait ce qu'elle veut et le porte avec allure.
-              </p>
+              <h3>{t("home.sig.v3t")}</h3>
+              <p>{t("home.sig.v3p")}</p>
             </Reveal>
           </div>
         </div>
@@ -172,15 +155,15 @@ export default function HomePage() {
           <div className="section-head section-head--split">
             <div>
               <Reveal as="p" className="eyebrow">
-                La collection
+                {t("home.selection.eyebrow")}
               </Reveal>
               <Reveal as="h2" delay={0.08}>
-                La sélection
+                {t("home.selection.title")}
               </Reveal>
             </div>
             <Reveal delay={0.16}>
               <Link href="/boutique" className="link-arrow">
-                Toute la boutique <span>→</span>
+                {t("home.selection.link")} <span>→</span>
               </Link>
             </Reveal>
           </div>
@@ -199,23 +182,18 @@ export default function HomePage() {
         <div className="container editorial__grid">
           <div className="editorial__text">
             <Reveal as="p" className="eyebrow">
-              La collection
+              {t("home.editorial.eyebrow")}
             </Reveal>
             <Reveal as="blockquote" delay={0.08}>
-              « Des silhouettes qui parlent d'elles-mêmes — imaginées pour
-              celles qui recherchent une mode élégante, féminine et
-              sophistiquée. »
+              {t("home.editorial.quote")}
             </Reveal>
             <Reveal as="p" delay={0.16} className="editorial__sign">
-              — Madee
+              {t("home.editorial.sign")}
             </Reveal>
           </div>
           <Reveal delay={0.1} className="editorial__panel">
-            <div className="editorial__word">Madee.</div>
-            <p>
-              Un nom, une promesse : celle d'une élégance intemporelle, pensée
-              dans le moindre détail pour révéler votre allure.
-            </p>
+            <div className="editorial__word">{t("home.editorial.word")}</div>
+            <p>{t("home.editorial.text")}</p>
           </Reveal>
         </div>
       </section>

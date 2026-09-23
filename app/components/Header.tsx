@@ -4,9 +4,12 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useCart } from "@/lib/cart-context";
+import { useT } from "@/lib/i18n";
+import Switchers from "./Switchers";
 
 export default function Header() {
   const { count, ready } = useCart();
+  const t = useT();
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -23,7 +26,6 @@ export default function Header() {
     return () => document.body.classList.remove("menu-open");
   }, [open]);
 
-  // Ferme le menu à chaque changement de page
   useEffect(() => {
     setOpen(false);
   }, [pathname]);
@@ -36,7 +38,7 @@ export default function Header() {
       <nav className="nav container">
         <button
           className="nav__toggle"
-          aria-label="Menu"
+          aria-label={t("nav.menu")}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
         >
@@ -47,41 +49,36 @@ export default function Header() {
 
         <ul className="nav__links nav__links--left">
           <li>
-            <Link
-              href="/boutique"
-              className={isActive("/boutique") ? "is-active" : ""}
-            >
-              Boutique
+            <Link href="/boutique" className={isActive("/boutique") ? "is-active" : ""}>
+              {t("nav.boutique")}
             </Link>
           </li>
           <li>
-            <Link
-              href="/a-propos"
-              className={isActive("/a-propos") ? "is-active" : ""}
-            >
-              La Maison
+            <Link href="/a-propos" className={isActive("/a-propos") ? "is-active" : ""}>
+              {t("nav.maison")}
             </Link>
           </li>
           <li>
-            <Link href="/#valeurs">Nos valeurs</Link>
+            <Link href="/#valeurs">{t("nav.valeurs")}</Link>
           </li>
           <li>
-            <Link
-              href="/journal"
-              className={isActive("/journal") ? "is-active" : ""}
-            >
-              Journal
+            <Link href="/journal" className={isActive("/journal") ? "is-active" : ""}>
+              {t("nav.journal")}
             </Link>
+          </li>
+          <li className="nav__links-switch">
+            <Switchers className="switchers--menu" />
           </li>
         </ul>
 
-        <Link href="/" className="nav__logo" aria-label="Madee — accueil">
+        <Link href="/" className="nav__logo" aria-label="Madee">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/madee-wordmark-green.png" alt="Madee" />
         </Link>
 
         <div className="nav__end">
-          <Link href="/panier" className="nav__cart" aria-label="Panier">
+          <Switchers className="switchers--bar" />
+          <Link href="/panier" className="nav__cart" aria-label={t("nav.cart")}>
             <svg
               viewBox="0 0 24 24"
               fill="none"

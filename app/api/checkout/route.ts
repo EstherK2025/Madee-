@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 import { products } from "@/lib/products";
+import { convert, paymentCurrency, isCurrency } from "@/lib/rates";
 
 export const runtime = "nodejs";
 
@@ -31,7 +32,7 @@ function buildLines(items: IncomingItem[]) {
 }
 
 export async function POST(req: NextRequest) {
-  let body: { items?: IncomingItem[] };
+  let body: { items?: IncomingItem[]; currency?: string };
   try {
     body = await req.json();
   } catch {
@@ -43,6 +44,8 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Panier vide" }, { status: 400 });
   }
 
+  const display = isCurrency(body.currency || "") ? (body.currency as any) : "CAD";
+  const cur = paymentCurrency(display);
   const base = siteUrl(req);
   const secret = process.env.STRIPE_SECRET_KEY;
 
@@ -67,8 +70,8 @@ export async function POST(req: NextRequest) {
       line_items: lines.map((l) => ({
         quantity: l.qty,
         price_data: {
-          currency: "eur",
-          unit_amount: l.product.price,
+          currency: cur.toLowerCase(),
+          unit_amount: Math.round(convert(l.product.price, cur) * 100),
           product_data: {
             name: l.product.name,
             description:

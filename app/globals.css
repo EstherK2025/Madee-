@@ -126,7 +126,7 @@ main{flex:1 0 auto}
 .hero__panel{background:var(--green);position:relative;display:flex;align-items:center;justify-content:center;padding:clamp(36px,5vw,64px);border-left:1px solid var(--line);overflow:hidden}
 .hero__panel::before{content:"";position:absolute;width:120%;height:60%;top:-10%;left:-10%;background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.16),transparent 60%);pointer-events:none}
 .hero__wordmark{width:min(84%,440px);filter:drop-shadow(0 20px 40px rgba(0,0,0,.28));position:relative;z-index:1}
-.hero__panel::after{content:"Première collection — 2026";position:absolute;bottom:24px;left:50%;transform:translateX(-50%);color:var(--paper);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600;padding:9px 18px;border-radius:999px;background:rgba(255,255,255,.12);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.22)}
+.hero__panel::after{content:"MADEE · 2026";position:absolute;bottom:24px;left:50%;transform:translateX(-50%);color:var(--paper);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600;padding:9px 18px;border-radius:999px;background:rgba(255,255,255,.12);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.22)}
 
 /* Bandeau statement (remplace le marquee) */
 .statement{background:var(--ink);color:var(--paper)}
@@ -359,6 +359,21 @@ main{flex:1 0 auto}
 .post p{color:var(--stone);font-size:.92rem;margin-bottom:1.1em}
 .post .link-arrow{margin-top:auto;align-self:flex-start}
 
+/* Sélecteurs langue / devise */
+.switchers{display:flex;gap:8px;align-items:center}
+.switch{appearance:none;-webkit-appearance:none;background:transparent;border:1px solid var(--glass-line);border-radius:999px;padding:7px 11px;font-family:var(--font-sans);font-size:.7rem;font-weight:600;letter-spacing:.03em;color:var(--ink);cursor:pointer}
+.switch:hover{border-color:var(--ink)}
+.switch:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+.nav__links-switch{display:none}
+.switchers--menu .switch{font-size:.95rem;padding:10px 14px;background:var(--white)}
+
+/* RTL (arabe) — désactive les espacements/kerning inadaptés */
+[dir="rtl"] h1,[dir="rtl"] h2,[dir="rtl"] h3,[dir="rtl"] h4{letter-spacing:normal}
+[dir="rtl"] .eyebrow{letter-spacing:normal}
+[dir="rtl"] .hero__title{letter-spacing:normal}
+[dir="rtl"] .announce__track{animation-name:slide-rtl}
+@keyframes slide-rtl{to{transform:translateX(50%)}}
+
 /* Responsive */
 @media (max-width:960px){
   .contact{grid-template-columns:1fr}
@@ -379,6 +394,8 @@ main{flex:1 0 auto}
   .nav__links a{font-size:1.35rem;padding-block:10px;opacity:1;letter-spacing:.02em}
   .nav__links a::after{display:none}
   .nav__toggle{display:flex;z-index:80}
+  .switchers--bar{display:none}
+  .nav__links-switch{display:block;margin-top:16px}
   body.menu-open .nav__toggle span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
   body.menu-open .nav__toggle span:nth-child(2){opacity:0}
   body.menu-open .nav__toggle span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}

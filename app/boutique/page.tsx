@@ -1,26 +1,19 @@
-import type { Metadata } from "next";
+"use client";
+
 import CategoryNav from "../components/CategoryNav";
 import ProductGrid from "../components/ProductGrid";
 import { products } from "@/lib/products";
-
-export const metadata: Metadata = {
-  title: "Boutique",
-  description:
-    "Découvrez toute la collection Madee : abayas, ensembles, robes, manteaux et accessoires modestes et raffinés.",
-};
+import { useT } from "@/lib/i18n";
 
 export default function BoutiquePage() {
+  const t = useT();
   return (
     <>
       <section className="pagehead">
         <div className="container">
-          <p className="eyebrow">La collection</p>
-          <h1>La Boutique</h1>
-          <p>
-            Des silhouettes qui parlent d'elles-mêmes. Nos modèles, imaginés
-            pour celles qui recherchent une mode élégante, féminine et
-            sophistiquée.
-          </p>
+          <p className="eyebrow">{t("boutique.eyebrow")}</p>
+          <h1>{t("boutique.title")}</h1>
+          <p>{t("boutique.intro")}</p>
         </div>
       </section>
 
