@@ -22,7 +22,7 @@ export default function ContactPage() {
             <p>{t("contact.asideText")}</p>
             <div className="contact__block">
               <span className="contact__label">{t("contact.email")}</span>
-              <a className="inline-link" href="mailto:bonjour@madee.com">bonjour@madee.com</a>
+              <a className="inline-link" href="mailto:Madee.wear@gmail.com">Madee.wear@gmail.com</a>
             </div>
             <div className="contact__block">
               <span className="contact__label">{t("contact.social")}</span>

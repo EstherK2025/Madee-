@@ -36,7 +36,7 @@ export default function LivraisonRetoursPage() {
           </ul>
           <p>
             {t("ship.p4a")}{" "}
-            <a className="inline-link" href="mailto:bonjour@madee.com">bonjour@madee.com</a>{" "}
+            <a className="inline-link" href="mailto:Madee.wear@gmail.com">Madee.wear@gmail.com</a>{" "}
             {t("ship.p4b")}
           </p>
 

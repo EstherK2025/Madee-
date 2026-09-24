@@ -19,7 +19,7 @@ export function emailConfigured(): boolean {
 }
 
 export function shopEmail(): string | undefined {
-  return process.env.SHOP_EMAIL || undefined;
+  return process.env.SHOP_EMAIL || "Madee.wear@gmail.com";
 }
 
 type SendArgs = {

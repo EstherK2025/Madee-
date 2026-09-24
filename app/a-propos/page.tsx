@@ -40,10 +40,10 @@ export default function AProposPage() {
             <p>
               {t("apropos.writeText")}{" "}
               <a
-                href="mailto:bonjour@madee.com"
+                href="mailto:Madee.wear@gmail.com"
                 style={{ color: "var(--paper)", textDecoration: "underline", textUnderlineOffset: "3px" }}
               >
-                bonjour@madee.com
+                Madee.wear@gmail.com
               </a>
               .
             </p>
